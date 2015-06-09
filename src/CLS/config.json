@@ -1,0 +1,10 @@
+﻿{
+  "AppSettings": {
+    "SiteTitle": "CLS"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=localhost\\sqlexpress;Database=CLS;Trusted_Connection=True;MultipleActiveResultSets=true;User ID=sa;Password=6883"
+    }
+  }
+}

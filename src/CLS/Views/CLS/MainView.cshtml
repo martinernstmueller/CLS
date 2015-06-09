@@ -1,0 +1,247 @@
+﻿@using Newtonsoft.Json
+@model CLS.Models.CLSModel
+
+@*
+    ToDo: put helper funcitons into an extern "library"
+    <script type="text/javascript" src="~/Views/CLS/MainViewHelpers.js"></script>
+    *@
+
+<style>
+    div.freeContainerPlace {
+        width: 200px;
+        height: 100px;
+        background: round;
+        background-color: lightgrey;
+        border: 2px solid black;
+    }
+
+    div.lockedContainerPlace {
+        background: round;
+        background-color: lightcyan;
+        border: 2px solid black;
+        width: 200px;
+        height: 100px;
+    }
+
+    div.menueStyle {
+        float: right;
+        clear: right;
+        visibility: visible;
+    }
+</style>
+<script src="@Url.Content("~/lib/jquery/jquery.js")"></script>
+<script type="text/javascript"
+        src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.min.js"></script>
+<script src="/signalr/hubs"></script>
+
+<script type="text/javascript">
+    var transferCarPlaces =  @Html.Raw(JsonConvert.SerializeObject(Model.GetTransferCarPlaces()));
+    var cranePlaces =  @Html.Raw(JsonConvert.SerializeObject(Model.GetCranePlaces()));
+    var containerPlaceShowingMenue = null;
+    var selectedContainerPlace = null;
+    var containerOnCrane = null;
+    var activeContainerPlace = null;
+    var CLSHub = $.connection.CLSHub;
+    $.connection.hub.start({ transport: 'longPolling' }).done(function () {console.log("hub started");});
+     
+    function getTextWidth(text, font) {
+        // re-use canvas object for better performance
+        var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+        var context = canvas.getContext("2d");
+        context.font = font;
+        var metrics = context.measureText(text);
+        return metrics.width;
+    };
+
+    function getContainerPlaceById(argContainerPlaceId)
+    {
+        for (var i=0; i < transferCarPlaces.length; i++)
+        {
+            if (transferCarPlaces[i].Id == argContainerPlaceId)
+                return transferCarPlaces[i];
+
+        }
+
+        for (var i=0; i < cranePlaces.length; i++)
+        {
+            if (cranePlaces[i].Id == argContainerPlaceId)
+                return cranePlaces[i];
+        }
+    }
+
+    function redrawContainerPlace(argContainerPlace, argShowMenue)
+    {
+        var innerHtml = '';
+        var div = document.getElementById(argContainerPlace.Id);
+        var twolineText = false;
+        if (argContainerPlace.Container != null)
+            twolineText = (getTextWidth(argContainerPlace.Container.Id, "12pt arial")) > 200;
+
+        if (argContainerPlace.ContainerPlaceType == "1") // ToDo: cant we have a better typing here??
+        {
+            if (argContainerPlace.Container != null)
+            {
+                innerHtml = innerHtml + '<div >' + argContainerPlace.Container.Id + '</div>';
+
+                if (twolineText)
+                    innerHtml = innerHtml + '<div style="position:relative; top:35px;  ">' + argContainerPlace.Id + '</div>'
+                else
+                    innerHtml = innerHtml + '<div style="position:relative; top:55px;  ">' + argContainerPlace.Id + '</div>'
+            }
+            else
+            {
+                innerHtml = innerHtml + '<div style="position:relative; top:75px;  ">' + argContainerPlace.Id + '</div>'
+            }
+        }
+
+        if (argContainerPlace.ContainerPlaceType == "3") // ToDo: cant we have a better typing here??
+        {
+            if (argContainerPlace.Container != null)
+            {
+                innerHtml = innerHtml + '<div >' + argContainerPlace.Container.Id + '</div>';
+
+                if (twolineText)
+                    innerHtml = innerHtml + '<div style="position:relative; top:35px;  ">' + argContainerPlace.Id + '</div>'
+                else
+                    innerHtml = innerHtml + '<div style="position:relative; top:55px;  ">' + argContainerPlace.Id + '</div>'
+            }
+            else
+            {
+                innerHtml = innerHtml + '<div style="position:relative; top:75px;  ">' + argContainerPlace.Id + '</div>'
+            }
+        }
+        if (argShowMenue)
+        {
+            // Show lock/unlock-symbol
+            var symbolPosition = -15;
+            if (argContainerPlace.Container != null)
+                symbolPosition -= 20;
+            if (twolineText)
+                symbolPosition -= 20;
+
+            // lock/unlock menue
+            innerHtml += '<div style="position:relative; top:' + symbolPosition +'px; left:175px;  ">'
+            innerHtml += '<img src="';
+            if (argContainerPlace.IsLocked)
+                innerHtml += '../images/unlock.png';
+            else
+                innerHtml += '../images/lock.png';
+
+            innerHtml += '" alt="ASP.NET" class="img-responsive" width="20" onclick="OnClickOnLockMenue()" ></img>';
+            innerHtml += '</div>';
+
+
+            // show menue for transfer car
+            if (argContainerPlace.ContainerPlaceType == "1") // ToDo: cant we have a better typing here??
+            {
+                if (argContainerPlace.Container != null && containerOnCrane == null)
+                {
+
+                    innerHtml += '<div style="position:relative; top:' + symbolPosition +'px; left:175px;  ">'
+                    innerHtml += '<img src="../images/arrowup.png" alt="ASP.NET" class="img-responsive" width="20" onclick="OnClickOnPickUpTransferCarMenue()"></img>';
+                    innerHtml += '</div>';
+
+                }
+            }
+        }
+        // set the class of the overall div (ToDo: recheck!)
+        if (argContainerPlace.IsLocked)
+            div.className =  "lockedContainerPlace";
+        else
+            div.className = "freeContainerPlace";
+
+        div.innerHTML = innerHtml;
+    }
+
+</script>
+
+<div class="jumbotron">
+    <h1>Künz CLS Main View</h1>
+</div>
+
+<div class="row">
+    <table>
+        <tr>
+            @foreach (var item in Model.GetTransferCarPlaces())
+            {
+                <td>
+                    <div onclick="OnClickOnContainerPlace(this)" id="@item.Id">
+
+                    </div>
+                </td>
+            }
+
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <table>
+        <tr>
+            @foreach (var item in Model.GetCranePlaces())
+            {
+                <td>
+                    <div onclick="OnClickOnContainerPlace(this)" id="@item.Id" class="freeContainerPlace">
+
+                    </div>
+                </td>
+            }
+
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    window.onload = function()
+    {
+        for (var i=0; i < transferCarPlaces.length; i++)
+        {
+            redrawContainerPlace(transferCarPlaces[i], false);
+        }
+
+        for (var i=0; i < cranePlaces.length; i++)
+        {
+            redrawContainerPlace(cranePlaces[i], false);
+        }
+        
+
+        
+
+    }
+
+    function OnClickOnContainerPlace(argContainerPlaceDiv) {
+        CLSHub.server.SentInfo("bla");
+        CLSHub.server.UpdateClients("bla");
+        var clickedContainerPlace = getContainerPlaceById(argContainerPlaceDiv.id);
+        console.log("OnClickOnContainerPlace with id " + clickedContainerPlace.Id);
+        redrawContainerPlace(clickedContainerPlace, true);
+        if (containerPlaceShowingMenue != null && containerPlaceShowingMenue.Id != clickedContainerPlace.Id)
+        {
+            console.log("Clear ContainerPlace with id " + containerPlaceShowingMenue.Id)
+            redrawContainerPlace(containerPlaceShowingMenue, false);
+        }
+        containerPlaceShowingMenue = clickedContainerPlace;
+    }
+
+    function OnClickOnContainerPlace(argContainerPlaceDiv) {
+        var clickedContainerPlace = getContainerPlaceById(argContainerPlaceDiv.id);
+        console.log("OnClickOnContainerPlace with id " + clickedContainerPlace.Id);
+        redrawContainerPlace(clickedContainerPlace, true);
+        if (containerPlaceShowingMenue != null && containerPlaceShowingMenue.Id != clickedContainerPlace.Id)
+        {
+            console.log("Clear ContainerPlace with id " + containerPlaceShowingMenue.Id)
+            redrawContainerPlace(containerPlaceShowingMenue, false);
+        }
+        containerPlaceShowingMenue = clickedContainerPlace;
+    }
+
+    function OnClickOnLockMenue() {
+        $.ajax({
+            type: "POST",
+            url: "/CLS/ChangeContainerPlaceLockingState",
+            data: '=' + containerPlaceShowingMenue.Id,
+            error: function(error) {
+                alert('errr: ' + error.responseText);
+            }
+        })
+    }
+</script>
