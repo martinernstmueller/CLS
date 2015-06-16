@@ -8,10 +8,6 @@
       "Microsoft.AspNet.Mvc >= 6.0.0-beta4",
       "Microsoft.AspNet.Mvc.TagHelpers >= 6.0.0-beta4",
       "Microsoft.AspNet.Authentication.Cookies >= 1.0.0-beta4",
-      "Microsoft.AspNet.Authentication.Facebook >= 1.0.0-beta4",
-      "Microsoft.AspNet.Authentication.Google >= 1.0.0-beta4",
-      "Microsoft.AspNet.Authentication.MicrosoftAccount >= 1.0.0-beta4",
-      "Microsoft.AspNet.Authentication.Twitter >= 1.0.0-beta4",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-beta4",
       "Microsoft.AspNet.Diagnostics.Entity >= 7.0.0-beta4",
       "Microsoft.AspNet.Identity.EntityFramework >= 3.0.0-beta4",
@@ -26,8 +22,9 @@
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta4",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0-beta4",
       "Microsoft.AspNet.SignalR.Server >= 3.0.0-beta4",
-      "Newtonsoft.Json >= 6.0.6",
-      "Microsoft.AspNet.SignalR.JS >= 2.2.0"
+      "Newtonsoft.Json >= 6.0.8",
+      "Microsoft.AspNet.SignalR.JS >= 2.2.0",
+      "EntityFramework.SqlServerCompact >= 6.1.3"
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
@@ -412,6 +409,46 @@
         "lib/net451/EntityFramework.SqlServer.Design.xml"
       ]
     },
+    "EntityFramework.SqlServerCompact/6.1.3": {
+      "serviceable": true,
+      "sha": "I6AltOs7CpwIvr7RApY4l8UPQ0W2NePxt6aY3zTFvkxvaxKHBYx5ArJisa/QZzYnDAOS5mP3YZsNzrttEqM0Nw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.SqlServer.Compact": "4.0.8876.1",
+            "EntityFramework": "6.1.3"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/EntityFramework.SqlServerCompact.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/EntityFramework.SqlServerCompact.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.SqlServer.Compact": "4.0.8876.1",
+            "EntityFramework": "6.1.3"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "EntityFramework.SqlServerCompact.6.1.3.nupkg",
+        "EntityFramework.SqlServerCompact.6.1.3.nupkg.sha512",
+        "EntityFramework.SqlServerCompact.nuspec",
+        "content/App.config.transform",
+        "content/Web.config.transform",
+        "lib/net40/EntityFramework.SqlServerCompact.dll",
+        "lib/net40/EntityFramework.SqlServerCompact.xml",
+        "lib/net45/EntityFramework.SqlServerCompact.dll",
+        "lib/net45/EntityFramework.SqlServerCompact.xml",
+        "tools/install.ps1"
+      ]
+    },
     "Ix-Async/1.2.3": {
       "serviceable": false,
       "sha": "ytmPAD08eQL81pJRSjl13uN2cATHgOSGELx4uKnkFcI9fu9d+l2XlOdpXkqnJvFp/85svr65yatzDzNNIMD8Lg==",
@@ -577,240 +614,6 @@
         "lib/dnx451/Microsoft.AspNet.Authentication.Cookies.xml",
         "lib/dnxcore50/Microsoft.AspNet.Authentication.Cookies.dll",
         "lib/dnxcore50/Microsoft.AspNet.Authentication.Cookies.xml"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.Facebook/1.0.0-beta4": {
-      "serviceable": true,
-      "sha": "IH8KemP1j1iepCLQAZ+OhZjeHR1WWAolnkeNNYUAFXQXUZDAElejxWrtU5+OVz5rb5GZVCH4nj9svLJ7rh9JxQ==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta4",
-            "Newtonsoft.Json": "6.0.6"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.Facebook.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.Facebook.dll"
-          ]
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta4",
-            "Newtonsoft.Json": "6.0.6"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.AspNet.Authentication.Facebook.1.0.0-beta4.nupkg",
-        "Microsoft.AspNet.Authentication.Facebook.1.0.0-beta4.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.Facebook.nuspec",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Facebook.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Facebook.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Facebook.xml"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.Google/1.0.0-beta4": {
-      "serviceable": true,
-      "sha": "sdwehyMZDbWvF/lV0yd/XIxMtWN3epUvJMcW9r+mZYQ3pAEiZLHQU//CDdXvZ2MuRDUXAFkfYjHCbQvuaCmdKw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta4"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.Google.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.Google.dll"
-          ]
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta4"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.AspNet.Authentication.Google.1.0.0-beta4.nupkg",
-        "Microsoft.AspNet.Authentication.Google.1.0.0-beta4.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.Google.nuspec",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Google.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Google.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Google.xml"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.MicrosoftAccount/1.0.0-beta4": {
-      "serviceable": true,
-      "sha": "ho/2XhYjtIb2VDO+JTTQWyyt5N9cL+qiEDenvdK5hSHxh3gUzZg2GGolAdN8mpntHjWb9lfai6d7eIczMW26TA==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta4"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.MicrosoftAccount.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.MicrosoftAccount.dll"
-          ]
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication.OAuth": "1.0.0-beta4",
-            "System.Dynamic.Runtime": "4.0.10-beta-22816",
-            "System.ObjectModel": "4.0.10-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.AspNet.Authentication.MicrosoftAccount.1.0.0-beta4.nupkg",
-        "Microsoft.AspNet.Authentication.MicrosoftAccount.1.0.0-beta4.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.MicrosoftAccount.nuspec",
-        "lib/dnx451/Microsoft.AspNet.Authentication.MicrosoftAccount.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.MicrosoftAccount.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.MicrosoftAccount.xml"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.OAuth/1.0.0-beta4": {
-      "serviceable": true,
-      "sha": "fOJ+3E6gT8+g3dku13hZEXbZog/Iqrz2dM9jGRtK4wdpB2AOQQ7PK/6cgjxT3m/79w8eeY7q+hhT00+p2DbcJQ==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.AspNet.DataProtection": "1.0.0-beta4",
-            "Microsoft.AspNet.Authentication": "1.0.0-beta4",
-            "Newtonsoft.Json": "6.0.6"
-          },
-          "frameworkAssemblies": [
-            "System.Net.Http.WebRequest",
-            "System.Net.Http",
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.OAuth.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.OAuth.dll"
-          ]
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "Microsoft.AspNet.DataProtection": "1.0.0-beta4",
-            "Microsoft.AspNet.Authentication": "1.0.0-beta4",
-            "Newtonsoft.Json": "6.0.6",
-            "System.Net.Http.WinHttpHandler": "4.0.0-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.AspNet.Authentication.OAuth.1.0.0-beta4.nupkg",
-        "Microsoft.AspNet.Authentication.OAuth.1.0.0-beta4.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.OAuth.nuspec",
-        "lib/dnx451/Microsoft.AspNet.Authentication.OAuth.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.OAuth.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.OAuth.xml"
-      ]
-    },
-    "Microsoft.AspNet.Authentication.Twitter/1.0.0-beta4": {
-      "serviceable": true,
-      "sha": "qwlssYBOxhuoL/oqU5HjCrO0a2ffBdKCqHBQsapVRy9xUtAD4pfuFeUV21n8O4H67bVeY5TlvQ7XM4cIIrTmfg==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication": "1.0.0-beta4"
-          },
-          "frameworkAssemblies": [
-            "System.Net.Http.WebRequest",
-            "System.Net.Http",
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.Twitter.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.AspNet.Authentication.Twitter.dll"
-          ]
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "Microsoft.AspNet.Authentication": "1.0.0-beta4",
-            "System.Net.Http.WinHttpHandler": "4.0.0-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.AspNet.Authentication.Twitter.1.0.0-beta4.nupkg",
-        "Microsoft.AspNet.Authentication.Twitter.1.0.0-beta4.nupkg.sha512",
-        "Microsoft.AspNet.Authentication.Twitter.nuspec",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Twitter.dll",
-        "lib/dnx451/Microsoft.AspNet.Authentication.Twitter.xml",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.dll",
-        "lib/dnxcore50/Microsoft.AspNet.Authentication.Twitter.xml"
       ]
     },
     "Microsoft.AspNet.Authorization/1.0.0-beta4": {
@@ -3029,7 +2832,7 @@
     },
     "Microsoft.CodeAnalysis.Analyzers/1.0.0-rc2": {
       "serviceable": false,
-      "sha": "/4Z5es8TXCEn5sfzWz2uhUITmikgCfMAhehMJPQcSD2FRp2ooLTczDq3p4KOl+bcnsvaAu0aKrmdRgOvkrcwhw==",
+      "sha": "S3P/WuSCgbhIxMVDFCJiJAh9g8ZVVIISsFn2lKqJYJdRGiFM2WJR0I46psNVXJt2uM13SBSGiAKAdqOeRvhl7w==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {},
@@ -3061,7 +2864,7 @@
     },
     "Microsoft.CodeAnalysis.Common/1.0.0-rc2": {
       "serviceable": false,
-      "sha": "7ALXqeJxiEMgnSST2qlWMThc5CIhJNFsUKYITIXXXj7gf8mF+ktEuKgUE7NWePzUgi0gq/2WmBX/4yWJuF1j6w==",
+      "sha": "LIc/rzjORrM0jrQ9ZtoIwJWbYi4IM7RvcSFT9YLe2uH9aBPq2oQ7qimK3ZosZJE+5faoJ+DgfGOigWw6uQpmQw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -3109,7 +2912,7 @@
     },
     "Microsoft.CodeAnalysis.CSharp/1.0.0-rc2": {
       "serviceable": false,
-      "sha": "wsj0BdWRY+fsUINMEQ+uanN0pWMAMj2z0UiJKjwoUo/Xbrk7PqGklzpOB7lvlESHjO8+Eaw71PQnml6j7m7rdQ==",
+      "sha": "RdXyaAZSRJH/oU6ccy3RNgGVMwFY1fY41I0Rtpbch9nq4mePYrkjTk3YObNHYa4lowAhktlaUoQOpprmOzc/kg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -3153,7 +2956,7 @@
     },
     "Microsoft.CSharp/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "FGnaYvmoVLd0QTnOyHfm+C79a9CGqQAoh76Ix9++a4SdeaAB8PgpB2Vi/Uc5jcp491QvPyPQjtXCuhRfqWvNkw==",
+      "sha": "h+75iL9JfUbT0P8xOm9u0XSvk5+8GUD92VVwjbvJHqIcM23DVv2AjYVhVjTm6y923lNLn+qh/h4ViinL9RME2Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -4827,6 +4630,58 @@
         "lib/net45/Microsoft.Net.WebSockets.xml"
       ]
     },
+    "Microsoft.SqlServer.Compact/4.0.8876.1": {
+      "serviceable": false,
+      "sha": "CKh6YxPd7/FApB3y5/mZyqkTVKDkbYFUf/tbDAwHlKLrIKRlJ7/VPLMqHX0izl4B0Yey+qMIVo7izGTSi/9ang==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/System.Data.SqlServerCe.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/System.Data.SqlServerCe.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Microsoft.SqlServer.Compact.4.0.8876.1.nupkg",
+        "Microsoft.SqlServer.Compact.4.0.8876.1.nupkg.sha512",
+        "Microsoft.SqlServer.Compact.nuspec",
+        "SQLCE_EULA_ENU.rtf",
+        "Content/web.config.transform",
+        "lib/net40/System.Data.SqlServerCe.dll",
+        "NativeBinaries/amd64/sqlceca40.dll",
+        "NativeBinaries/amd64/sqlcecompact40.dll",
+        "NativeBinaries/amd64/sqlceer40EN.dll",
+        "NativeBinaries/amd64/sqlceme40.dll",
+        "NativeBinaries/amd64/sqlceqp40.dll",
+        "NativeBinaries/amd64/sqlcese40.dll",
+        "NativeBinaries/amd64/Microsoft.VC90.CRT/Microsoft.VC90.CRT.manifest",
+        "NativeBinaries/amd64/Microsoft.VC90.CRT/msvcr90.dll",
+        "NativeBinaries/amd64/Microsoft.VC90.CRT/README_ENU.txt",
+        "NativeBinaries/x86/sqlceca40.dll",
+        "NativeBinaries/x86/sqlcecompact40.dll",
+        "NativeBinaries/x86/sqlceer40EN.dll",
+        "NativeBinaries/x86/sqlceme40.dll",
+        "NativeBinaries/x86/sqlceqp40.dll",
+        "NativeBinaries/x86/sqlcese40.dll",
+        "NativeBinaries/x86/Microsoft.VC90.CRT/Microsoft.VC90.CRT.manifest",
+        "NativeBinaries/x86/Microsoft.VC90.CRT/msvcr90.dll",
+        "NativeBinaries/x86/Microsoft.VC90.CRT/README_ENU.txt",
+        "tools/Install.ps1",
+        "tools/Uninstall.ps1",
+        "tools/VS.psd1",
+        "tools/VS.psm1"
+      ]
+    },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader/14.0.0-beta4": {
       "serviceable": false,
       "sha": "boV/2tq0MqUYeKowZQezkaq/VCQejrS8GTt56BbS1SlqIPxY8B4o/HG+0cA6CU4OG6LuxGgaE+y4OxKCWsGdCg==",
@@ -4883,7 +4738,7 @@
     },
     "Microsoft.Win32.Primitives/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "ldNL3JQPhkj7E/R0uLjsfnBT1ZKA/sUyDyxT4rAMbWvkrOUA9XUSz/HnEQOH2fIZOgAUOLmjUKVD8KoVRiuz5A==",
+      "sha": "f09k3GX4YeCodB7XbO8zSUlkFFiPtCUzhl4u6szPOwTQ9lCGLJ7NzvUhr17LPlrx+Ev4J8W6GYwnp10pg2ZBOw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -4926,7 +4781,7 @@
     },
     "Microsoft.Win32.Registry/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "xe6l/FykjaClPrBuyIcl/dJArGcl/pnaIuvmMaYpwFomrdPIMIT/itnyc7JEGrZrHJYi1wPFbNWjOsGNkWPivg==",
+      "sha": "Q3l8KDbPE6vgQu9PSAy9LsO/5SpCm2FVQ9OkCC0T4YfRJianKpYlXl1e4H07hkAgvlzPlM5SF6+6Ie090cFiiw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -4968,9 +4823,9 @@
         "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/Microsoft.Win32.Registry.dll"
       ]
     },
-    "Newtonsoft.Json/6.0.6": {
+    "Newtonsoft.Json/6.0.8": {
       "serviceable": false,
-      "sha": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
+      "sha": "7ut47NDedTW19EbL0JpFDYUP62fcuz27hJrehCDNajdCS5NtqL+E39+7Um3OkNc2wl2ym7K8Ln5eNuLus6mVGQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {},
@@ -4994,8 +4849,8 @@
         }
       },
       "files": [
-        "Newtonsoft.Json.6.0.6.nupkg",
-        "Newtonsoft.Json.6.0.6.nupkg.sha512",
+        "Newtonsoft.Json.6.0.8.nupkg",
+        "Newtonsoft.Json.6.0.8.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -5049,7 +4904,7 @@
     },
     "System.AppContext/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "MJD/+dt1BHq3iwFjNd39s5I/EwBehhyuk8h5urPpthjtDwtPGbA0DZl6MLjBH/QI2R5km/9a6WwD7nVX1exhsQ==",
+      "sha": "qOp+iww/jf3OK7Hm24C9OO3lnHzqNrjX8m3Nq58FQ5g3VL+XdkkZXG4RIvMasg5YeL6bVWdzHo2KYsjwqJxw+Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5091,7 +4946,7 @@
     },
     "System.Collections/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "tkVBx0CH/Xunk18S9LvNzPRqbXdIzsHbcGRtePrZCNZ9EUNuXK0dzzUl5q0KUgsQmeyUCDSw+7mwyG/pDGSpAA==",
+      "sha": "pFwiLMtcsvAx8ZFsSIDVSuPAXXW2z1gkmE/YqiMELlxPVHKyJGrUZoJCIBfVg1HERxMnd1dyj7ffqj5Nx3mzGQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5135,7 +4990,7 @@
     },
     "System.Collections.Concurrent/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "mI2+5S3DG07KCur+L4sHleKLzFQEnXo8h3t4gS0awNFzyar8nVKNb95OkiECI68PLy/FM3HfVAuqb12qPw3CXg==",
+      "sha": "IWT4zcq0JdzU5HvJuHZbBFIntFfjmKzkfPbUWw5gwbso5nejOfVSCiRgJmUmEex0R5oJN+sX8gSrJrofzoXrww==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5214,7 +5069,7 @@
     },
     "System.ComponentModel/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "TX8lTOzeCNocpE5I197CwwgrpWLn99oriw1hOTYVT/9E+QSWIAco6MJBT9KT0W35I24yqihwFL+YxWJL32kBhg==",
+      "sha": "XLcSvVsb7/lj68LSjmX834BKxOXspQ7HRSgTiToz4LWKbEvGgZwXHPDUWNo0UbjDFSBsxprYc0PCVygXwhOIMw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5257,7 +5112,7 @@
     },
     "System.ComponentModel.Annotations/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "+EOfC1wC7uvN7MIwj1WxbWyzrJgJN+PSwCSYF7ZBsOLdf0cdlhmugZ41rdGQ9RC/j2LrJI8ESF6V/mufWhPvXg==",
+      "sha": "of+uHufZF62Feuge1uC38upLqDdNRqwr8royXillY4742v11C4mq993c1ePGgXDd6Yzl69cS6a4mo9vcY5kHqA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5302,7 +5157,7 @@
     },
     "System.ComponentModel.Primitives/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "QzXJQ35c/t2eRfJM26dPoTdiiHJEFMaU1Wml0ybe9j36kLHYzcgf0C/9zSV+BvzS7A91D5/5mPet0Cv+Q7RB/g==",
+      "sha": "h51WOYlBn5P8wwwdVPp3f4XD0QIPg0V0HV1dPelTuSWs62c4HgVULlOxyg3ajfZStlXBiG/Tg8WCEaQ7gJ4N8Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5347,7 +5202,7 @@
     },
     "System.ComponentModel.TypeConverter/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "15V77KKc5kRk9SU6XHxV4Dsdbh58Ez80HGNK4XlVVauwhElB3+bP7r0E02rO1kHicgo+JXHjVY8EKM8Io/2hUg==",
+      "sha": "0i5BHhZAj1YtgxoHvMsnYrfH2tJKxdhoz6EEmCD9q6y3sYSpKueB/AyTUJ3zD6xFFafGqirT+iIaux/oo7mITw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5396,7 +5251,7 @@
     },
     "System.Console/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "Nj6lappTB2mN/jfONYJ88FTG+vtPWa4/KHlkjukULmOrhoA0x5IfZrbCZJdyZ9lYoS0s1o3DOerwnlw8KSS5jQ==",
+      "sha": "Uq1C1DP7MYuE0qqIaI15k/k3r2IKX6A/suIboAkOCLYoiG4jhFfc0ECJVsiXWJEWf7o5xRA0cz+hi+awB5HugA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5440,7 +5295,7 @@
     },
     "System.Data.Common/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "S529QASzN//8c99JoII7mB3/HXDiEFghpdI0BX2l6wi+pl+tWszDEvLG3fTzitZiE9x5/TsaC9+PqffajhfGIg==",
+      "sha": "7cRRCmUPaUbscio/n1MUgnY1IetH7fH19iuLrfahncpWkEkE6cZSMprkWYFp5CsWrky0OXAnbiW8ANsSGhfbFQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5542,7 +5397,7 @@
     },
     "System.Diagnostics.Contracts/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "VOIJ0WOsEqObJGjbotKqxMi2zd5Axrfp0cgQm4BmJcfUwLX1uSgd2cNk5QIKnRsduIUzm/dhHWOhN8CErORuYw==",
+      "sha": "jQ4K8gXjsWRQ9f2N4FrWhJj4CZiWnqEnB5i7vzPkUuxxxX3ahGySGNckBP+MX/WAS8xItofCubeNdOEgwHXORA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5584,7 +5439,7 @@
     },
     "System.Diagnostics.Debug/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "SpAvttDhL6xvgnJDK3+XHDt3qi/NWVNpvmfugQ1WwCzATkOcMI6D4BmlRegegvCX0l5mcfuGjMCwq/yMUAe2Ew==",
+      "sha": "sFAWo06FoJmZLT0oH/HzbpWUdaEPK6ao58ttrdqnQ6QXRtTH85NXHRrhxpU/tDSODX1fPuwIEf+i5vSVJvoCOQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5627,7 +5482,7 @@
     },
     "System.Diagnostics.Process/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "Il3m0cEPiomMZSVfmeU7dJ+ZxQPqJ8OEJd6k2vLWU0F64WKDC/B1HR2Cwti2l1q9cacp96cTmZ7UwxMAbF9b6g==",
+      "sha": "cJ8+p0xCP6/6cQJ3OF+w6lsx43bL0t+IOywb4IFKf04K9OJdjLx9G1blZMPccYsFX+geIuJVP/iVbj889pKhaQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5678,7 +5533,7 @@
     },
     "System.Diagnostics.Tools/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "pw4yWIMUuAgnhAdqy7ixMtH39EVpOgz1jraQ5neT8GL6gK5NdvecjuWhHP5Ly/zEj8YEaDE6HLZUh+vTOQ1XXw==",
+      "sha": "yfUqnhEozAZZoM87LRWSOwj5bpeoOacikMJoHOqSBTItsXSN0yqO+qilFfS4O8QuFbXbnxwlg+4ElrcpX3Zozw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5721,7 +5576,7 @@
     },
     "System.Diagnostics.TraceSource/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "8ifv7iDyrKaoL60L6RLeKhMdvBs2sT14lUJoUJ919J4x54GRHZgQjz8qESKHvecjSXByOp+WBtP7OTYNoo3XDQ==",
+      "sha": "vzkkoMMThODIp46iDkXC+0E8d2IHFE2HgIYoHaHOVurpjDZg90MvkgYRionwTvZtVoit3s/o0X1zqRZKj0uJEw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5764,7 +5619,7 @@
     },
     "System.Dynamic.Runtime/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "xPMym5hsntfLf/Gisnvk3t25TaZRvwDF46PaszRlB63WsDbAIUXgrsE4ob8ZKTL7+uyGW1HGwOBVlJCP/J1/hA==",
+      "sha": "xq53sL6Md+m46wnLYnmbCvAnbo05vlyDt9v6r1HhXCL4Q7uk66aFKMRg3ca+0uGcOY8AujPhepHBC2lQumJGew==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5813,7 +5668,7 @@
     },
     "System.Globalization/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "Eq2937cdQH2G3qij5gZIJ47785OwLK/+AVjyHfJKnWyhAFWoaLnQOVtaXfMVkfvp4AW7eDVkqIv0fSoS6N2q0A==",
+      "sha": "Bedo0Nd7solBPW1k52EmlA+RKm+yxT2Os8fiu27DK2fyBa68pdFNM9ckjZ1X2DW0E9q49IxRMaWpflTBerMb8Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5855,7 +5710,7 @@
     },
     "System.Globalization.Extensions/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "xE/FRnbN55gE38hcVGkkSeqZux4hCxhlyHYIUJltshbfOnnvKP3JqeqNphqHKe5Gj07JP1K4v8Fj474mtVcdWg==",
+      "sha": "NkavhruL0WXVbISSn9kD5oWERpElW37LE4ygjieWj+iA9541yBykTtf0YkcTwHeMpBRVCXTycEc8dc4Ko6osLQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5895,7 +5750,7 @@
     },
     "System.IO/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "/wVhoi2uVXw5IZFU+JrPlyVgKrtMPtzQaYQ3DKUxH9nqiX64BChTFGNDcwZK3iNWTIWESxJhj9JR3lbqbG/PIg==",
+      "sha": "PjyH9UMFVQHSl8g1XR+M6Q/mG2RTpPff42kG9aygXyR/Wyt/O/wOiyxZ2SaYNl8e86yecKRh9SnK2RS9thI4ig==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5942,7 +5797,7 @@
     },
     "System.IO.Compression/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "1PWYEebKSpGL9u9j+teLXB+TF5rZcKU/Ys56UL3kaqDGjMwCgG/Dry81Paiz+VRmHnq8DxcRoCF3hUGo2M0FVQ==",
+      "sha": "XLIvFYkpjuAHSr9H7mjtv6sfv4kkSAWJ+ysVO4/KzCDRjYqs9Fl50PnuDkOfBJBoIf5BrWY+GF+4xj4WFBHb/Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -5982,7 +5837,7 @@
     },
     "System.IO.FileSystem/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "PcJ9xwnx7PmUaE5aqAGX0GKzkmmYpGfMzruT1Vfx9XIaFGsVm223ky0/FrKzUc5TYKN4MTfFp8GAooA+I0KMDA==",
+      "sha": "Xj6YespEa1Rfm7WO6mV572lvtpJTvKjJJMWmxS80qEeMsUiHQvVq4+lhv4ZJp++0nSqBMKcXGgwLXrDswcJiBQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6034,7 +5889,7 @@
     },
     "System.IO.FileSystem.Primitives/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "UKD9kvQOZ6QHhJnroaRnJVVzu36nDZc+LJNkhEAmXAJT4SL2G8PyWlUkDptcFSEmv5b71/IFdllS8RIfKP9X2g==",
+      "sha": "wunds834DNL9o+I3I0pkw7rwaDN7DuD51G4nWOO1YTBPoBwsMFIvG0RW1q6K8mKq4pDwm9NkuCJD4cU/knQmWQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6076,7 +5931,7 @@
     },
     "System.IO.FileSystem.Watcher/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "rfGWjcMCtWVgHsaURhfD4ynjxxGWXDucm4xABXLkzG7c2soz5q4A2W3Gk8ZauydL9F2xI5vX+95DgxtOrjrxjg==",
+      "sha": "BGlcKYgf849Gda+8Ft4eQhrDpIOCUQAErFECUAQrj1/l1aSX1uAW2990iL90tEg0YCdlqMH0KfGXcdXfKLdwVQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6119,7 +5974,7 @@
     },
     "System.Linq/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "zBGJfF48L17zFzfs/B8KI1yQklPul0af4a1auQTyUxjdy/HzppkIfoRgrq3yqV+YIPWDkUxu9U9bwjOj90xLXw==",
+      "sha": "QlwRD8FTiYAZ7BxEjB5u9vjKaAHZ6KvuZYm+4tjYduTIWpFI3o34UjowJXCaPlLwc8USRshAXLgnsQ3iaOjv8Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6164,7 +6019,7 @@
     },
     "System.Linq.Expressions/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "qTu/alZVoEBZRIrbLzVlFSndQyhIEXY+qoBockbsUu98TDtd1N9gYiyg7FHeW7Qx1vDGfz1PWfUlYBd4G/ZHkg==",
+      "sha": "daFTEhRXqo1X1EVkTcuqRMDWR3QE5vrk0IY4kkOBjtCASv7YDXsnBJO8BuiZsK1CzEHoxAQiPLs954l86ckRYA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6209,7 +6064,7 @@
     },
     "System.Linq.Queryable/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "xfD1UAuZXwfY8ycEHZVqmuVL93evp2smQJ0uiDgl4acLM6l5XwUHDkTl4dZGbLSSgTIRRf0KeSqTQiJNYfRS0A==",
+      "sha": "Th/WNRO7Mx7OwTnwufXz665yUV2U9tB5c1mwOsFPAhavY+4gPl+IWnofKqZoCvKciyZIeitj3VMGI0vOgS2lvg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6254,97 +6109,9 @@
         "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Linq.Queryable.dll"
       ]
     },
-    "System.Net.Http/4.0.0-beta-22816": {
-      "serviceable": false,
-      "sha": "cumH4jT7bRcFiShwZWGHvk3WPJtifAnWMyCnjOE/Eadppza6UHjHiOa3YjwaQwMPg1Cib3fELHbJ4hyOiTBnNw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "System.IO": "4.0.10-beta-22816",
-            "System.Net.Primitives": "4.0.10-beta-22816",
-            "System.Runtime": "4.0.20-beta-22816",
-            "System.Text.Encoding": "4.0.10-beta-22816",
-            "System.Threading.Tasks": "4.0.10-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [],
-          "compileAssemblies": []
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "System.IO": "4.0.10-beta-22816",
-            "System.Net.Primitives": "4.0.10-beta-22816",
-            "System.Runtime": "4.0.20-beta-22816",
-            "System.Text.Encoding": "4.0.10-beta-22816",
-            "System.Threading.Tasks": "4.0.10-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/aspnetcore50/System.Net.Http.dll"
-          ],
-          "compileAssemblies": [
-            "lib/contract/System.Net.Http.dll"
-          ]
-        }
-      },
-      "files": [
-        "License.rtf",
-        "System.Net.Http.4.0.0-beta-22816.nupkg",
-        "System.Net.Http.4.0.0-beta-22816.nupkg.sha512",
-        "System.Net.Http.nuspec",
-        "lib/aspnetcore50/System.Net.Http.dll",
-        "lib/contract/System.Net.Http.dll",
-        "lib/net45/_._",
-        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Net.Http.dll"
-      ]
-    },
-    "System.Net.Http.WinHttpHandler/4.0.0-beta-22816": {
-      "serviceable": false,
-      "sha": "lyZYZIP5hKn9JMOG3ZEg/5Vv7amGk/yW2pCqO8S3NS1w9eAKrEMLK0L+muspAfriGTUULLWn/hv34IReQRztow==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "System.Net.Http": "4.0.0-beta-22816",
-            "System.Net.Primitives": "4.0.10-beta-22816",
-            "System.Runtime": "4.0.20-beta-22816",
-            "System.Security.Cryptography.X509Certificates": "4.0.0-beta-22816",
-            "System.Threading.Tasks": "4.0.10-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [],
-          "compileAssemblies": []
-        },
-        "DNXCore,Version=v5.0": {
-          "dependencies": {
-            "System.Net.Http": "4.0.0-beta-22816",
-            "System.Net.Primitives": "4.0.10-beta-22816",
-            "System.Runtime": "4.0.20-beta-22816",
-            "System.Security.Cryptography.X509Certificates": "4.0.0-beta-22816",
-            "System.Threading.Tasks": "4.0.10-beta-22816"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/aspnetcore50/System.Net.Http.WinHttpHandler.dll"
-          ],
-          "compileAssemblies": [
-            "lib/contract/System.Net.Http.WinHttpHandler.dll"
-          ]
-        }
-      },
-      "files": [
-        "License.rtf",
-        "System.Net.Http.WinHttpHandler.4.0.0-beta-22816.nupkg",
-        "System.Net.Http.WinHttpHandler.4.0.0-beta-22816.nupkg.sha512",
-        "System.Net.Http.WinHttpHandler.nuspec",
-        "lib/aspnetcore50/System.Net.Http.WinHttpHandler.dll",
-        "lib/contract/System.Net.Http.WinHttpHandler.dll",
-        "lib/net45/_._",
-        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Net.Http.WinHttpHandler.dll"
-      ]
-    },
     "System.Net.NetworkInformation/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "80E3mmBaNow/88IPtpjujEIwzoR/uoGjs8xVNO6IU9OonI1lx2ZCU/W5waAtaGykFxqL3fu/EihnK0gHHmyp2A==",
+      "sha": "WV96+TRrpk8wHrutbVaWLKk+mSPbcIUSDAgyyFkcmpD2WavaiP2VSJO4m4saSS50rhyMzvEAB011S24ndTu0Jg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6391,7 +6158,7 @@
     },
     "System.Net.Primitives/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "qjGWAfaOkFxhOvk10zmUgUPOl2ae+ECrNiHBXPnPlaU7o+1GmsPkkc9L1XNQ4J5+qKS85JZSRUZZviVmiVy1Rw==",
+      "sha": "jsLwoWIuMLFqUZmrQcMclxdV3Fm/XlVse0j6graRZbjgrEOPBN7O0Lhfvdrsqsx73xz19+/u/DFN7NQc6X7E+A==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6436,7 +6203,7 @@
     },
     "System.Net.Sockets/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "k4QNo+wewz2+sJHgJf5I5d8oeM+NlYe1tMxbjm+QOZ2G4L+8EGKwVcj2abPcUoqmH3NFNxmG2JJnX8IuAgr+KQ==",
+      "sha": "n5QmCEnCFRycYo+qGl0FBM3Tx4uYvcuWk1jS/F36WXVZGJmeYeNAD1fmANBr3+fcoQgNXmDdjTBASooa8eMp8Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6485,7 +6252,7 @@
     },
     "System.ObjectModel/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "Rtu5FLq7JTtignXiSEKx26Q01NHyoO3pTcYYdwF54kFC64VbHEcvs8b586JyVVpM7Wz0zBmdgHDrH9fv2MgeVw==",
+      "sha": "tWcx/WRx/nlsBCPMtMxeniVqDvfJAfNQcq5eRhBIH4myultIvpuRfC3hy6Bby29/v3Zzy2fPgSyRIPGdOIIX4w==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6528,7 +6295,7 @@
     },
     "System.Reflection/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "vdH/6euCyI/0el+6baAh/pttTZyWDh/PfL2TebSri3+FvNkjIEcE4httMn7J/5Lqz+NMDcLP7wOlY4Aa5EazNg==",
+      "sha": "YzEbWoLTsPOUL4mPRbeRkhfJ12VgIJVy7fwoKnp0RgxXwuQQ2CPFt2E3qjl2TWzMpnhyRBtM2L/qkt4Dlg8Okw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6670,7 +6437,7 @@
     },
     "System.Reflection.Extensions/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "jioNtekwiaIeTR5S6jz9rDRRkdZ+MQpRtQjl3Jw0JDOJ1EGoJiSW4rM8ve6HQeZzOR3goXwMGCYWgd97l4GomQ==",
+      "sha": "YjpkRQYsZa8509nJw5nIp71qWlmnwG0jUZUWmnO9urK6u2uOB6oDSx4a+vi5CB/9KrBe3ZXVD/Yq/Nr8PyWQaQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6752,7 +6519,7 @@
     },
     "System.Reflection.Primitives/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "LXGxjPbmTit9COY1WKRG89Eya58UFVqebeNvGDCrX/c/72OP9XX00+wUUE34WFDioKeVBjofOySFdtKMVsDq1Q==",
+      "sha": "EJwj21pXCKrEixqXZ0mcJXYwDaTMTX9csa3Gcrm9i0UwemWaUPMHU94Y3crDuvk5h+urJlm6rk8xuEXIgmTFzg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6794,7 +6561,7 @@
     },
     "System.Reflection.TypeExtensions/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "ZKKMl8vp2zCvitcB15Zgw4dzIPXH5yNe4/2HIAFYwLgGsvy6v0nMONRUgzXM57yiK4VaeZE8TFInq3dOoZ2V+g==",
+      "sha": "VNe9Gt6E7jYfHWghPlX90EOkCL+q+7TAJHx4U7mJZMsxQmp/QrgEIcKCbG502/X/RUL4dqZkL/uG9QfOhDw/tg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6832,7 +6599,7 @@
     },
     "System.Resources.ResourceManager/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "Ojsj/AmyC/SSxRIWdk/cmDeNeenxJWpBC9147gpxcCGEbWtqAVY5eWTz4zvvyTFfVZm720YjJqQtmnDSh2ECPQ==",
+      "sha": "TgVqjZT7jiiPXeC7WAZLqmmSZ+PAdSKHHsQzGoNxCT2WXVgBak0vbeNkt2oOycYMWgIfKKt8/yT6wmcRVMX0dg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6878,7 +6645,7 @@
     },
     "System.Resources.ResourceWriter/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "iil22X2qTuSB4Ve7NFSJdDfkF5jGFfQzYV+Hoo5UqC+8vIjTUdC/lzN3cxqdX7D+KqU5uZka1K0dx5IBPYB/oA==",
+      "sha": "Q6wpzkZjop1J+WJXl9H0OgXQvxDQxMkqA43AVENNW4SlTzIT8rFW7tum54xYZy3QCMKK8gIfOnVqA6VbgXRq1Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -6922,7 +6689,7 @@
     },
     "System.Runtime/4.0.20-beta-22816": {
       "serviceable": false,
-      "sha": "sDSJEmM6Q5O7Nn9XxHTrsEJ4bv4hsBdeTWjuvyzd9/u9ujl9AWa3q1XFLrdPZetILPOC1P0+1LOCq4kZcsKF5Q==",
+      "sha": "BEN6F4aNjbBdDxM8Xhb/MCSDhYmtvA29c1HUBvn0aNAVXaIJECLy2w5YkcscdklIieZCrcYeG2UzIgWlr4+GeQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {},
@@ -6963,7 +6730,7 @@
     },
     "System.Runtime.Extensions/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "VyMZA1a7c1j9lbSarndGwFLEpip5uhl3oZTjW2fR8Lte0lWKB8Aro8rRoEHsWd5vUd3/kYDOvIXvGpCKBMlW1g==",
+      "sha": "b8ymkNB0apTc/FCmyeB/Js1CMg8EBaOlM2biIKA94Dk0sT/yyGd8SyCeuZXiCGCIk6HpSiIsIdX53rXgTWxH0w==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7006,7 +6773,7 @@
     },
     "System.Runtime.Handles/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "t0hDCtbwOKLBTcyiXHYRfaVb8pXCFYjGDWjmgyaaqmiXYtfzDlUHQ7NGaKHLOzcp29UunHZyS1CVplJ5ZiQ8Qg==",
+      "sha": "v0zgBcuEWIbjC/AXgmutaLymiHgL6dv/1T7uJVAaraFivnClvEERwihXmRCr+HH22AC1J6tbuGE0/cnhZNV6QA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7049,7 +6816,7 @@
     },
     "System.Runtime.InteropServices/4.0.20-beta-22816": {
       "serviceable": false,
-      "sha": "cu2GnWoI8Uxe5kvb3bjO5G/7eRrjTe4GuddR8iT8dJX+VEW7QZN0+M/wv56jm2AD16RQldjzpFIdYCkycOaDxw==",
+      "sha": "MJtigFXlDXgxs8GwrKOlXdXHlNVKz4/pCiDx23NFt8cFb254DNgU5D3kxRDl+xZb74vlhgUvXMOTPLbsMaTcbA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7099,7 +6866,7 @@
     },
     "System.Runtime.Loader/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "WX770KPvZrLYLoK4rrHTGbE+l+kyTz8U4RrqpaP5p9me9hWDe+/G/jKVvArtXLL8OnrkfyWRkpF73ROWr0AzVA==",
+      "sha": "kamtRnkehMjf5Qy3tUNQ2hC8xgQEEwwzd/5Ekp2RmGGlmqml9lU7FcCNQCwemCB2O8IfShKc/kknGChZRiGuAg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7139,7 +6906,7 @@
     },
     "System.Runtime.Serialization.Primitives/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "G1uYDQfNiMy76tAgR6HPEZuXTp0Dwl1BE682raw1AE+0E4c74mKXg0a5CteMNsVkrS4KMftNvdR+18FQM4dGgQ==",
+      "sha": "zRXu/9dKdQ8DyGBiKdqLjaF5Tmwi2OaACjQAkw7rcK2vG3R/zQxvGu3jwYcx6IE/5k1lI6B7f3nRAcUzYCjagw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7182,7 +6949,7 @@
     },
     "System.Security.Claims/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "s2wSkELEjRvaUkQLXKlr2Gu30/Hh6T2yb5wXKPZrwp83duIvpKodNp/Lbb2ebHp8ypjNEAMhIMrGDI/8AY24jg==",
+      "sha": "sDsp8jMY/oSrs5HfWW2DD486kApePJm0MjWCbO0DQ7/fRjQoofD4BNjJwrHuZsY43+qsOKNkGhH1TtrKOJvDEA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7228,7 +6995,7 @@
     },
     "System.Security.Cryptography.Encoding/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "xxstV4LYIz4ugAWAkXkGlmdrXsl7Nmg1JimeaNVTmMGrTu99VLHW5Mn9HCyozLonxGE4XSgxO8Z/2Ys/FirsPQ==",
+      "sha": "M3/ku4DzK3QzMABlgYe11hHreOteSWZt6SQP8vsfoazRvvjoQK9DtWUQKsBcs0JO9sc/dXokiuoHm5ZeeKIrTw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7271,7 +7038,7 @@
     },
     "System.Security.Cryptography.Encryption/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "oAKOXFCQFabEfmiHHLfVFnuv/ber/FuAAmcgdPyUwgg3PWCgss6GhEP89eopGIrKacGUOhberA2W2WYJax3jKQ==",
+      "sha": "xBL4gwQVDRU113c1iwTbzSd08waa1C6r7hnZls5BEsNCL0haA+xo9KbysGrv+bcX+eYS/SmP1+LvyL0YuExCew==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7317,7 +7084,7 @@
     },
     "System.Security.Cryptography.Encryption.Aes/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "g9dwsPxqLzZV+NmTsDzzgTcjrXVNpi27hbxixz/exRH+oewIZ1nE8T0ozot3+z5NSnCGObiN8Aq6GNAIWu0qXg==",
+      "sha": "2JR9dt8SAEYR48GCrpMqCvoM8bIfqMVA5XkQMffcvT47lcFGdsxV5+m7qoTE358GNb65DMK5RL71cql9e27F8g==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7361,7 +7128,7 @@
     },
     "System.Security.Cryptography.Hashing/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "bB8cT1NwMBuz7tejXLQ3eH81s0pRoaqwUrM1CNCNeEV1OFyUQ/qXJhVx5nXTB8AGMIxGVn9JCXMdZm6CM2RTrA==",
+      "sha": "CQ+k5PCqX3rOYC1gLcFNXWl7VwBPMyZhkQFiukqtSMG/mWKQ8ba9+oF1V+9c5zUerhHMxFhrwymnghQpA/NdhQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7405,7 +7172,7 @@
     },
     "System.Security.Cryptography.Hashing.Algorithms/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "xjCltKxHteccyq3dUXzJaN1L7BQJnbS0xT2A79ac3xmzxUDiIFQtRjhlexf/LQ8uTXKR7epqkZL3xsHxbj2aZg==",
+      "sha": "2lhNYPFf0ChTgS83OOiGqxkB8ue4e8r28B3F4NDdsQSaknW5RDhhFSxe40bFltiNuIXuNz1QROI1345leHnjxw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7449,7 +7216,7 @@
     },
     "System.Security.Cryptography.RandomNumberGenerator/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "kbpLkyy+LJsD3BsCdMKGK9FeIQYrubLnhINXl5ClvUX1RDzE+Tj0j0V6t76oAHf3fpYm+4IaQvK2cu4l3H6N9Q==",
+      "sha": "fpR/JD6ZLE+e2ylZZ03vetpPIlujqfhVSD8O/t/JPCHwFajOK0K2WR0SagjEZQyNmbxj/5i1cQZpYgsqEdkeNA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7491,7 +7258,7 @@
     },
     "System.Security.Cryptography.X509Certificates/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "1GWuXid5RltZu+zMiPbnBv78TqUwF7Gw3hH68l4x7B83iXwAibafGtBRkU6b0Ca8xRQ0QW+gdZ8Z9qwouckGiw==",
+      "sha": "K5BXENwRkMItZe8rbktAHN9mbvxTxk+419VjS4Qe2sy3t6O0dpawfrf3q5SuSCHKBG4wnzEvpLB2NtAGg25VyA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7540,7 +7307,7 @@
     },
     "System.Security.Principal/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "sw5j0BHJ5e2mvEtINy7wYmbkwDxqVJeMVW61sDK/5AlgqjMbZvWGNJ75eYJAwrSM02TQqL7CdJXM0KAGjv36eQ==",
+      "sha": "0Sid1BnQD7prW4t0vJa7NbLAi8bPNdgOmSIIuVt2kjJVNs0AKHz9f4lCL7v0NiDVdq09wheoBTbbV2TdBMgZhA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7582,7 +7349,7 @@
     },
     "System.Security.Principal.Windows/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "7izfM6NEYLmcqxY2p+fxA2lLmBjCDH4BfRglAjss+DMoB8gPif/vT0PS2UEK1ps3OS4wVI2+V8HqS6UtU4pfbA==",
+      "sha": "MzC3IMcLWbcLZnaeVfz4CWz8aTZuE4hNo6SghqsLSMplhQcMPx1V5dBXTmhNLYVUuRvK26rHhEaEX3XBeWLY3w==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7630,7 +7397,7 @@
     },
     "System.Security.SecureString/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "/2ebjd4tFN8AWgibm3/37jVofPBm402nZW2v1cOET70oN7YufIc/dPFxr7iR52vVZvjWulE1tagtp9JVZ4QkMQ==",
+      "sha": "MdJtWNPTX4KlhwNM9JeJnWPXiIrOU8iq26oY2eleWxSDhlVq6Vz3Ww8P0pqnIxdN+3lVPwON+eCG+nt7XtkrBA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7666,7 +7433,7 @@
     },
     "System.Text.Encoding/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "QDKTAvat7aDGMWnVkGm6tJvvmc2zSTa/p8M4/OEBBkZKNx4SGkeGEjFUhl7b6AXZ220m4dACygkiAVoB/LqMHw==",
+      "sha": "4Isk8Lg2mkSex8N1ufJfazDo9Z0zTvx7FRh7LYiIqUJJSmPMenMXoFYMtm3tQ+sUWz23qMlIrOvT9BuIBnmRQg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7708,7 +7475,7 @@
     },
     "System.Text.Encoding.CodePages/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "5hAabFX89ZFqNAwhN5/UMvc9CtTEKR8/uc/POKb/KGUQ/v9H1gg1q9oh73YOKI6PAqIqPvOboR8e2I1y1jzqLA==",
+      "sha": "q52eEfAgtMfsNDbTetTX1EN337+2IyJTJH/DrRnFsdzfoyblYY/511USLsg4qmLriLS0kryXUZG3DzQsOfzt8Q==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7746,7 +7513,7 @@
     },
     "System.Text.Encoding.Extensions/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "Z9DRS58546MQZnHHexNQ/cu+ERZRbTKggFL8+OD2+3dVOqD9sNMcClLhh/b20KdfxXvlyMu/X4uj15V2XTom0g==",
+      "sha": "dqV4x++TZlQfUNMEyvSN/C+JLseuVGOOxSX9BHbBm863oktctQOJ4mUaADmqyaOryeqF6YQ3f/+z30q3LxEGTQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7790,7 +7557,7 @@
     },
     "System.Text.RegularExpressions/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "2vDV9r31A+zqYrgrwDglderkGCIhqOiLEnKKjGVzxXl/A+df6exN1Chy/Ib8wSoRO5nhwOPKwfsOgk3HOEOTEg==",
+      "sha": "f6reT2KQ1IjeAKeZEX5TSIFugrsmofjD3N+9HD4c2WAMFlEs4p4/ycsmS1bLlV7n+JRHsmUkhgpCVWMZYPk+aA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7833,7 +7600,7 @@
     },
     "System.Threading/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "tNAZqIJaAhnHpiEJdvGby7EFfirhD3aX+FF6vQBnHrk+bWVv4yAQ3k/skF7FBJIhMozenT41/1QVVwtTSR3HOQ==",
+      "sha": "GO4X3FuGlw4DJH+UbbKDXKnyyWiwlPJIX+Ys0UCzSdAPneBA42dPb2+kRakWy+wo6n6Gcv7ckkfa3j8MSSxbhg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7879,7 +7646,7 @@
     },
     "System.Threading.Overlapped/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "DVOxcsPE6oytnqutQue1B2wbk8iOzbqc+ZwEJCSde0QB2hVmUFmXKJZ6/2nAlM7Dn1tQt0TXG9tgImMFN6vSqQ==",
+      "sha": "ySoYOwqWqI0/a9/9DBcR+nYuiZGWH9q4S3W8vgCYOKWZ45Ib6hAvRQn1zfBp59aNL2YR22aoPfdjyIr8hEb0GA==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7921,7 +7688,7 @@
     },
     "System.Threading.Tasks/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "e7TcoQuIPQ4bvkkCY2ulU8NFvj8XqYxsGpD3fAq1KajAlpx5j327Q13lKxlGPb7ouHQydKHCy5G1ZGuydb0DAA==",
+      "sha": "KhcVrI2JzX1oHigWTbf4F/2uhPSkhjquLPYbBVCLe9HGxLDJk2WLgmTbJk7fIus6xWWnWJmhOp0rHERU9M2SQw==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -7964,7 +7731,7 @@
     },
     "System.Threading.Tasks.Parallel/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "lyNOQHQEZexE/QuNxEsphQWQIfkQ7/ba8haMFRg5hnHixyVmbUUB56JF+cSozr2mNCwwgXKaWvBRbcOx7qpAfw==",
+      "sha": "R37jymbPrAW0HlnjFLq/7cPdc8RfKqJB3lDyXsIv1sSUre8mHuQVPCOK8OCjx0qZ8pCElNd985i155Rr31w+yQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -8010,7 +7777,7 @@
     },
     "System.Threading.Thread/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "hq1pNoES0jEKslftDhBeJnRUBSjEepiya+39oH/7yCvOp4xMnXHlWe9G7ZS/dg2n4k+3VY21AUifisybcFjcCQ==",
+      "sha": "wOOp9YPzypTTup0HYl4Fl9kekjceKfDirKMjnQ1oKZgdoaycyD8n6bt9d9N/lPWVi2xonr+Rf/WvnzmA7K8eMQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -8052,7 +7819,7 @@
     },
     "System.Threading.ThreadPool/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "rJHrtGxx4qNtPH4GXlgRDnVKVjSWJEHPL4opk4WqXnbJVo6pU9wPpoMSCfoDpIj0xptD/8GzU8EG7MK0fTqJ4w==",
+      "sha": "vD4CAz4MtwC504yWDY2aHIAfDfW5HZ2uQH2gWOSozxbL1BHnIFso/8v4dzVanQ4eKmOhHZzO8uJLCt6jHBGa5g==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -8096,7 +7863,7 @@
     },
     "System.Threading.Timer/4.0.0-beta-22816": {
       "serviceable": false,
-      "sha": "2lEYXM2A2zMZ9cIKXomXqF9fUBIxhC5zV4p5gMRdV9foU2tDWYM2O/DGwyyV7j+FOdH14fS81VvAdzh8VQPcWA==",
+      "sha": "Gr9S5A6SP9RSdNQ4mdUVe41z6jUqgVxgqpl4JnJGu6eTysN/ShNsPu9/IGulZ0PxsNpRxmVCqd50lLl7n7GMbQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -8138,7 +7905,7 @@
     },
     "System.Xml.ReaderWriter/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "G0aLPtC/phTfiJPwe0VA3tB3x8YFQ1dHFuE1xaHNr9eQm/AfBp4Pk+fn3s7ABJDus/T89EtIHQ9C+O6VmqXIQQ==",
+      "sha": "Mx4PY22Xvz4u6h6A3yDNi8S7yvIh7yHSE9v0QM21d4cha2HMP5pwPdaKqCNkRytCQwKrBUFdMGQAmysF6n0K7w==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -8187,7 +7954,7 @@
     },
     "System.Xml.XDocument/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "FcCtcZGfIC53KE0X9afERg0lLEJnXBQBAZG0wc0cSsklju2aZrXRS6QWOMMr91LLPJAefeTEoyrDw2LoXbp/Ww==",
+      "sha": "6NwAYXuYtZtS6LSqXsMjafbVUnNWeqClza4qkfCehd2T0OdcwseTAN23IBL6ogumrjHFRdoomTFXTau4TVQCXg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {
@@ -8234,7 +8001,7 @@
     },
     "System.Xml.XmlSerializer/4.0.10-beta-22816": {
       "serviceable": false,
-      "sha": "/Oj5J4gCctvriNJW5CxouMD92OuXUcnwZt8fXapqo2Pj2hlB0gt7XMFlqM72q4th7VdYGslx8uLSXJNH82omNA==",
+      "sha": "IUQ5927Bga6REs2/yOaVEW37OE2tiXlmkG1qVb2Umvv2Lf21XTXCTLTAp4XkpB6h8iItc/0cZQgys7bSnooBlg==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {

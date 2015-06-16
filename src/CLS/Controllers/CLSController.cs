@@ -16,10 +16,19 @@ namespace CLS.Controllers
     [HubName("CLSHub")]
     public class CLSHub : Hub
     {
-        public void UpdateClients(string argValue)
+        private static readonly ICollection<string> Users = new List<string>();
+        public static int seconds = 0;
+
+        public CLSHub()
         {
-            Clients.All.updateContainerPlace(argValue);
+            
         }
+
+        public void Send(string Message)
+        {
+            Clients.All.showMessage(Message);
+        }
+
     }
 
     public class CLSController : Controller
@@ -32,12 +41,6 @@ namespace CLS.Controllers
         {
             _hub = argConnectionManager.GetHubContext<CLSHub>();
             
-        }
-
-        public IActionResult UpdateClients(List<ContainerPlace> argContainerPlaesToBeUpdated)
-        {
-            // ToDo: Do the SignalR Stuff here!!
-            return RedirectToAction("MainView");
         }
 
         public IActionResult MainView()
@@ -55,6 +58,7 @@ namespace CLS.Controllers
         [HttpPost]
         public void ChangeContainerPlaceLockingState(string argContainerPlaceId)
         {
+            //_hub.Clients.All.showMessage("Server noticfied a clock on Container with Id " + argContainerPlaceId);
             var cp = CLSModel.GetContainerPlaceById(argContainerPlaceId);
             if (cp == null)
                 return;
@@ -65,15 +69,96 @@ namespace CLS.Controllers
                 var unlockedCP = CLSModel.GetCranePlaces().Single(c => c.IsLocked == false);
                 lockedCP.IsLocked = false;
                 unlockedCP.IsLocked = true;
-                UpdateClients(new List<ContainerPlace>() { lockedCP, unlockedCP });
+                // ToDo: Send multiple cps to the view
+                var cpupdates = new List<ContainerPlace>() { lockedCP, unlockedCP };
+                _hub.Clients.All.UpdateContainerPlaces(cpupdates);
+                return;
+            }
+
+            cp.IsLocked = !cp.IsLocked;
+            _hub.Clients.All.UpdateContainerPlace(cp);
+            return;
+
+        }
+
+        [HttpPost]
+        public void PickUpContainerFromContainerPlace(string argContainerPlaceId)
+        {
+            var cp = CLSModel.GetContainerPlaceById(argContainerPlaceId);
+            if (cp == null)
+            {
+                // ToDo: the error handling here!!
+                _hub.Clients.All.showMessage("Could not load container to crane. Container with Id " + cp.Id + " could not be found!");
+                return;
+            }
+
+            var crane = CLSModel.CranePlaces.Single(cr => cr.IsLocked == false);
+
+            if (crane.Container != null)
+            {
+                // ToDo: the error handling here!!
+                _hub.Clients.All.showMessage("Could not load container to crane with id " + crane.Id + " -> Crane is already occupied!");
+                return;
+            }
+            if (cp.ContainerPlaceType == "3")
+            {
+                // error! We could not pick up a container from a crane!
+                // ToDo: the error handling here!!
+                _hub.Clients.All.showMessage("Could not pick up a container from  " + crane.Id + " -> Crane is already occupied!");
+                return;
+            }
+            if (cp.ContainerPlaceType == "1") // its a transfer car
+            {
+                // assign the container to the Crane
+                var tc = (TransferCarPlace)cp;
+                crane.Container = tc.Container;
+                tc.Container = null;
+                var cpupdates = new List<ContainerPlace>() { crane, tc};
+                _hub.Clients.All.UpdateContainerPlaces(cpupdates);
                 return;
 
             }
 
-            cp.IsLocked = !cp.IsLocked;
-            UpdateClients(new List<ContainerPlace>() { cp });
             return;
 
+        }
+
+        [HttpPost]
+        public void DropDownContainerFromContainerPlace(string argContainerPlaceId)
+        {
+            var crane = CLSModel.CranePlaces.Single(cr => cr.IsLocked == false);
+            if (crane.Container == null)
+            {
+                // ToDo: the error handling here!!
+                _hub.Clients.All.showMessage("Could not drop container on Container place with id  " + argContainerPlaceId + 
+                    " -> There is no Container on Crane with id " + crane.Id + "!");
+                return;
+            }
+            var cp = CLSModel.GetContainerPlaceById(argContainerPlaceId);
+            if (cp == null)
+            {
+                // ToDo: the error handling here!!
+                _hub.Clients.All.showMessage("Could not drop container to container place with Id " + argContainerPlaceId + "! Container place not could not be found!");
+                return;
+            }
+
+            if (cp.ContainerPlaceType == "3")
+            {
+                // ToDo: the error handling here!!
+                _hub.Clients.All.showMessage("Can not drop a container onto a crane!");
+                return;
+            }
+            if (cp.ContainerPlaceType == "1") // its a transfer car
+            {
+                // assign the container to the transfer car
+                var tc = (TransferCarPlace)cp;
+                tc.Container = crane.Container;
+                crane.Container = null;
+                var cpupdates = new List<ContainerPlace>() { crane, tc };
+                _hub.Clients.All.UpdateContainerPlaces(cpupdates);
+                return;
+            }
+            return;
         }
     }
 }

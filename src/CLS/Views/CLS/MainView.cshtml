@@ -29,21 +29,107 @@
         visibility: visible;
     }
 </style>
-<script src="@Url.Content("~/lib/jquery/jquery.js")"></script>
-<script type="text/javascript"
-        src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.3.min.js"></script>
-<script src="/signalr/hubs"></script>
 
+<div class="jumbotron">
+    <h1>Künz CLS Main View</h1>
+</div>
+
+<div class="row">
+    <table>
+        <tr>
+            @foreach (var item in Model.GetTransferCarPlaces())
+            {
+                <td>
+                    <div onclick="OnClickOnContainerPlace(this)" id="@item.Id">
+
+                    </div>
+                </td>
+            }
+
+        </tr>
+    </table>
+</div>
+<div class="row">
+    <table>
+        <tr>
+            @foreach (var item in Model.GetCranePlaces())
+            {
+                <td>
+                    <div onclick="OnClickOnContainerPlace(this)" id="@item.Id" class="freeContainerPlace">
+
+                    </div>
+                </td>
+            }
+
+        </tr>
+    </table>
+</div>
+
+<script src="@Url.Content("~/lib/jquery/jquery.js")"></script>
+<script src="@Url.Content("~/lib/signalr/jquery.signalR.js")"></script>
+<script src="/signalr/hubs"></script>
 <script type="text/javascript">
     var transferCarPlaces =  @Html.Raw(JsonConvert.SerializeObject(Model.GetTransferCarPlaces()));
     var cranePlaces =  @Html.Raw(JsonConvert.SerializeObject(Model.GetCranePlaces()));
     var containerPlaceShowingMenue = null;
     var selectedContainerPlace = null;
-    var containerOnCrane = null;
+    var containerOnCrane = false;
     var activeContainerPlace = null;
     var CLSHub = $.connection.CLSHub;
-    $.connection.hub.start({ transport: 'longPolling' }).done(function () {console.log("hub started");});
-     
+
+    $.extend(CLSHub.client, {
+        showmessage: function (message) {
+            showmessage(message);
+        },
+        updateContainerPlace: function (argContainerPlace) {
+            updateContainerPlace(argContainerPlace);    
+        },
+        updateContainerPlaces: function (argContainerPlaces) {
+            updateContainerPlaces(argContainerPlaces);    
+        }
+    });
+    $.connection.hub.logging = true;
+    
+    $.connection.hub.start().
+    done(function () {
+        console.log("Connected!");
+    })
+    .fail(function () {
+        alert("Could not Connect!");
+    });
+
+    function showmessage(message) {
+        console.log(message);
+    }
+
+    function updateContainerPlaces(argContainerPlaces)
+    {
+        for (var i=0; i < argContainerPlaces.length; i++)
+        {
+            updateContainerPlace(argContainerPlaces[i]);
+        }
+    }
+
+    function updateContainerPlace(argContainerPlace)
+    {
+        console.log("start updating container place with id" + argContainerPlace.Id);
+        for (var i=0; i < transferCarPlaces.length; i++)
+            if (transferCarPlaces[i].Id == argContainerPlace.Id)
+                transferCarPlaces[i] = argContainerPlace;
+
+        for (var i=0; i < cranePlaces.length; i++)
+        {
+            if (cranePlaces[i].Id == argContainerPlace.Id)
+            {
+                cranePlaces[i] = argContainerPlace;
+                containerOnCrane =  (cranePlaces[i].Container != null);
+            }
+        }
+        
+        redrawContainerPlace(argContainerPlace, false);
+
+    }
+
     function getTextWidth(text, font) {
         // re-use canvas object for better performance
         var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
@@ -52,7 +138,7 @@
         var metrics = context.measureText(text);
         return metrics.width;
     };
-
+    
     function getContainerPlaceById(argContainerPlaceId)
     {
         for (var i=0; i < transferCarPlaces.length; i++)
@@ -71,6 +157,7 @@
 
     function redrawContainerPlace(argContainerPlace, argShowMenue)
     {
+        console.log("redrawContainerPlace with id " + argContainerPlace.Id);
         var innerHtml = '';
         var div = document.getElementById(argContainerPlace.Id);
         var twolineText = false;
@@ -130,17 +217,26 @@
             innerHtml += '" alt="ASP.NET" class="img-responsive" width="20" onclick="OnClickOnLockMenue()" ></img>';
             innerHtml += '</div>';
 
-
-            // show menue for transfer car
-            if (argContainerPlace.ContainerPlaceType == "1") // ToDo: cant we have a better typing here??
+            // show menue for transfer car if not locked
+            if (!argContainerPlace.IsLocked && argContainerPlace.ContainerPlaceType == "1") // ToDo: cant we have a better typing here??
             {
-                if (argContainerPlace.Container != null && containerOnCrane == null)
+                if (containerOnCrane) // if a Container is on the crane and no one on the tc show the drop dorn symbol
                 {
-
-                    innerHtml += '<div style="position:relative; top:' + symbolPosition +'px; left:175px;  ">'
-                    innerHtml += '<img src="../images/arrowup.png" alt="ASP.NET" class="img-responsive" width="20" onclick="OnClickOnPickUpTransferCarMenue()"></img>';
-                    innerHtml += '</div>';
-
+                    if (argContainerPlace.Container == null)
+                    {
+                        innerHtml += '<div style="position:relative; top:' + symbolPosition +'px; left:175px;  ">'
+                        innerHtml += '<img src="../images/arrowdown.png" alt="ASP.NET" class="img-responsive" width="20" onclick="OnClickOnDropDownContainerFromContainerPlaceMenue()"></img>';
+                        innerHtml += '</div>';
+                    }
+                }
+                else // if a Container is on the TC and no container is on the crane show the pick up symbol
+                {
+                    if (argContainerPlace.Container != null)
+                    {
+                        innerHtml += '<div style="position:relative; top:' + symbolPosition +'px; left:175px;  ">'
+                        innerHtml += '<img src="../images/arrowup.png" alt="ASP.NET" class="img-responsive" width="20" onclick="OnClickOnPickUpContainerFromContainerPlaceMenue()"></img>';
+                        innerHtml += '</div>';
+                    }
                 }
             }
         }
@@ -153,44 +249,6 @@
         div.innerHTML = innerHtml;
     }
 
-</script>
-
-<div class="jumbotron">
-    <h1>Künz CLS Main View</h1>
-</div>
-
-<div class="row">
-    <table>
-        <tr>
-            @foreach (var item in Model.GetTransferCarPlaces())
-            {
-                <td>
-                    <div onclick="OnClickOnContainerPlace(this)" id="@item.Id">
-
-                    </div>
-                </td>
-            }
-
-        </tr>
-    </table>
-</div>
-<div class="row">
-    <table>
-        <tr>
-            @foreach (var item in Model.GetCranePlaces())
-            {
-                <td>
-                    <div onclick="OnClickOnContainerPlace(this)" id="@item.Id" class="freeContainerPlace">
-
-                    </div>
-                </td>
-            }
-
-        </tr>
-    </table>
-</div>
-
-<script type="text/javascript">
     window.onload = function()
     {
         for (var i=0; i < transferCarPlaces.length; i++)
@@ -202,29 +260,12 @@
         {
             redrawContainerPlace(cranePlaces[i], false);
         }
-        
-
-        
-
     }
 
     function OnClickOnContainerPlace(argContainerPlaceDiv) {
-        CLSHub.server.SentInfo("bla");
-        CLSHub.server.UpdateClients("bla");
-        var clickedContainerPlace = getContainerPlaceById(argContainerPlaceDiv.id);
-        console.log("OnClickOnContainerPlace with id " + clickedContainerPlace.Id);
-        redrawContainerPlace(clickedContainerPlace, true);
-        if (containerPlaceShowingMenue != null && containerPlaceShowingMenue.Id != clickedContainerPlace.Id)
-        {
-            console.log("Clear ContainerPlace with id " + containerPlaceShowingMenue.Id)
-            redrawContainerPlace(containerPlaceShowingMenue, false);
-        }
-        containerPlaceShowingMenue = clickedContainerPlace;
-    }
 
-    function OnClickOnContainerPlace(argContainerPlaceDiv) {
         var clickedContainerPlace = getContainerPlaceById(argContainerPlaceDiv.id);
-        console.log("OnClickOnContainerPlace with id " + clickedContainerPlace.Id);
+        console.log("OnClickOnContainerPlace with id 11" + clickedContainerPlace.Id);
         redrawContainerPlace(clickedContainerPlace, true);
         if (containerPlaceShowingMenue != null && containerPlaceShowingMenue.Id != clickedContainerPlace.Id)
         {
@@ -238,6 +279,28 @@
         $.ajax({
             type: "POST",
             url: "/CLS/ChangeContainerPlaceLockingState",
+            data: '=' + containerPlaceShowingMenue.Id,
+            error: function(error) {
+                alert('errr: ' + error.responseText);
+            }
+        })
+    }
+
+    function OnClickOnPickUpContainerFromContainerPlaceMenue() {
+        $.ajax({
+            type: "POST",
+            url: "/CLS/PickUpContainerFromContainerPlace",
+            data: '=' + containerPlaceShowingMenue.Id,
+            error: function(error) {
+                alert('errr: ' + error.responseText);
+            }
+        })
+    }
+
+    function OnClickOnDropDownContainerFromContainerPlaceMenue() {
+        $.ajax({
+            type: "POST",
+            url: "/CLS/DropDownContainerFromContainerPlace",
             data: '=' + containerPlaceShowingMenue.Id,
             error: function(error) {
                 alert('errr: ' + error.responseText);
