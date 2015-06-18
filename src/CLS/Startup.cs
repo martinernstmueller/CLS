@@ -158,6 +158,7 @@ namespace CLS
             await userManager.AddClaimAsync(usr, new Claim("CanShowContextMenu", "true"));
             await userManager.AddClaimAsync(usr, new Claim("CanLockContainerPlaces", "true"));
 
+
         }
 
         private void CreateTestData()

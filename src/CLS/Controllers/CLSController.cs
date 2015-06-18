@@ -48,9 +48,11 @@ namespace CLS.Controllers
             var claims = ((ClaimsIdentity)User.Identity).Claims.ToList();
             if (!((ClaimsIdentity)User.Identity).Claims.Any(c => c.Type == "CanShowMainView"))
             {
-                var msg = "You do not have the priviledges to show the about page! Please login first.";
+                var msg = "You do not have the priviledges to show the Main View! Please login first.";
                 return RedirectToAction("Login", "Account", new { argMessage = msg });
             }
+            ViewBag.CanShowContextMenu = ((ClaimsIdentity)User.Identity).Claims.Any(c => c.Type == "CanShowContextMenu");
+            ViewBag.CanLockContainerPlaces = ((ClaimsIdentity)User.Identity).Claims.Any(c => c.Type == "CanLockContainerPlaces");
 
             return View(CLSModel);
         }
